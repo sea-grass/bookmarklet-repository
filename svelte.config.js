@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
+import process from 'process';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -14,6 +15,9 @@ const config = {
 			crawl: true,
 			pages: ['/', '/bookmarklet']
 		},
+    paths: {
+      base: process.env.BASE_URL || ''
+    },
 		router: false,
 		adapter: adapter({
 			pages: 'build',

@@ -38,6 +38,8 @@ lint:
 build:
   FROM +source
 
+  ARG BASE_URL
+
   RUN npm run build
 
   SAVE ARTIFACT build AS LOCAL ./build

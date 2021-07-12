@@ -1,10 +1,13 @@
+<script>
+  import Link from '$lib/Link.svelte';
+</script>
 <h1>Bookmarklet Repository</h1>
 <ul>
 	<li>
-		<a href="/">Home</a>
+    <Link href="/">Home</Link>
 	</li>
 	<li>
-		<a href="/bookmarklet">Bookmarklets</a>
+    <Link href="/bookmarklet">Bookmarklets</Link>
 	</li>
 </ul>
 
