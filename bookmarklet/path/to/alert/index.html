@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="modulepreload" href="/./_app/start-0d7ab47f.js">
+		<link rel="modulepreload" href="/./_app/chunks/vendor-98ea38e6.js">
+		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-874a50f7.js">
+		<link rel="modulepreload" href="/./_app/pages/bookmarklet/[...file]/index.svelte-93133858.js">
+		<link rel="stylesheet" href="/./_app/assets/start-a8cd1609.css">
+
+		<script type="module">
+			import { start } from "/./_app/start-0d7ab47f.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":"/."},
+				session: {},
+				host: location.host,
+				route: false,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/./_app/pages/__layout.svelte-874a50f7.js"),
+						import("/./_app/pages/bookmarklet/[...file]/index.svelte-93133858.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "/bookmarklet/path/to/alert",
+						query: new URLSearchParams(""),
+						params: {"file":"path/to/alert"}
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<h1>Bookmarklet Repository</h1>
+<ul><li><a href="/">Home</a></li>
+	<li><a href="/bookmarklet">Bookmarklets</a></li></ul>
+
+<h2>alert</h2>
+Drag this link to your bookmarks bar:<a href="javascript:alert(&#39;Boo!&#39;);\n">alert</a>
+<!-- HTML_TAG_START --><pre><code>alert('Boo!');
+</pre></code><!-- HTML_TAG_END -->
+
+
+
+	<script type="application/json" data-type="svelte-data" data-url="/data/path/to/alert/data.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"name\":\"alert\",\"pre\":\"\u003Cpre\u003E\u003Ccode\u003Ealert('Boo!');\\n\u003C\u002Fpre\u003E\u003C\u002Fcode\u003E\",\"url\":\"javascript:alert('Boo!');\\n\"}"}</script>
+</div>
+	</body>
+</html>
