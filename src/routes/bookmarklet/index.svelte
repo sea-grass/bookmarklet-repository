@@ -22,6 +22,8 @@
 </script>
 
 <script>
+  import Link from '$lib/Link.svelte';
+
 	export let urls = [];
 </script>
 
@@ -29,7 +31,7 @@
 <ul>
 	{#each urls as url}
 		<li>
-			<a href={url}>{url}</a>
+      <Link href={url}>{url}</Link>
 		</li>
 	{/each}
 </ul>
