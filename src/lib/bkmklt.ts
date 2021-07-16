@@ -3,12 +3,13 @@ import fs from 'fs';
 import { cwd } from 'process';
 import { join, relative, resolve } from 'path';
 import { minify } from 'terser';
-import { js as beautify } from 'js-beautify';
+import jsBeautify from 'js-beautify';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 hljs.registerLanguage('js', javascript);
 
 const { readFile, stat } = fs.promises;
+const { js: beautify } = jsBeautify;
 
 const BOOKMARKLET_DIR = resolve(cwd(), 'bookmarklets');
 
