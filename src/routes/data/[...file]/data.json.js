@@ -4,8 +4,6 @@ export async function get({ params }) {
 	const { file } = params;
 	const res = await bkmklt.get(file);
 
-	console.log(res);
-
 	if (res.error) {
 		return {
 			status: 404,

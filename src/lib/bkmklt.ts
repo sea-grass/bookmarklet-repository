@@ -31,7 +31,6 @@ interface GetError {
 
 export async function get(file: string): Promise<Get | GetError> {
 	const path = resolve(BOOKMARKLET_DIR, file + '.js');
-	console.log(path);
 
 	try {
 		const stats = await stat(path);
@@ -48,7 +47,7 @@ export async function get(file: string): Promise<Get | GetError> {
 	const { value: highlightedCode } = hljs.highlight(beautifiedCode, {
 		language: 'js'
 	});
-	const pre = `<pre><code>${highlightedCode}</code></pre>`;
+	const pre = `<pre><code class='hljs'>${highlightedCode}</code></pre>`;
 	const url = `javascript:${wrapBookmarkletCode(minifiedCode)}`;
 
 	const parts = file.split('/');
@@ -88,9 +87,6 @@ export async function getAll(): Promise<GetAll | GetAllError> {
 			error
 		};
 	}
-
-	console.log(BOOKMARKLET_DIR);
-	console.log(files);
 
 	const paths = files.map((path) => {
 		// remove the .js file extension
