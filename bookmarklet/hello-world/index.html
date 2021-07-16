@@ -4,20 +4,20 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/default.min.css" data-svelte="svelte-1o01rd5">
 
 		
 
-		<link rel="modulepreload" href="/bookmarklet-repository/_app/start-3f6add6f.js">
-		<link rel="modulepreload" href="/bookmarklet-repository/_app/chunks/vendor-98ea38e6.js">
+		<link rel="modulepreload" href="/bookmarklet-repository/_app/start-e61f5dca.js">
+		<link rel="modulepreload" href="/bookmarklet-repository/_app/chunks/vendor-afdb4af7.js">
 		<link rel="modulepreload" href="/bookmarklet-repository/_app/chunks/paths-45dac81d.js">
-		<link rel="modulepreload" href="/bookmarklet-repository/_app/pages/__layout.svelte-666ed8bc.js">
-		<link rel="modulepreload" href="/bookmarklet-repository/_app/chunks/Link-3c1d4003.js">
-		<link rel="modulepreload" href="/bookmarklet-repository/_app/pages/bookmarklet/[...file]/index.svelte-93133858.js">
+		<link rel="modulepreload" href="/bookmarklet-repository/_app/pages/__layout.svelte-cdefbe9a.js">
+		<link rel="modulepreload" href="/bookmarklet-repository/_app/chunks/Link-c25c8da0.js">
+		<link rel="modulepreload" href="/bookmarklet-repository/_app/pages/bookmarklet/[...file]/index.svelte-226e3058.js">
 		<link rel="stylesheet" href="/bookmarklet-repository/_app/assets/start-a8cd1609.css">
 
 		<script type="module">
-			import { start } from "/bookmarklet-repository/_app/start-3f6add6f.js";
+			import { start } from "/bookmarklet-repository/_app/start-e61f5dca.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/bookmarklet-repository","assets":"/bookmarklet-repository"},
@@ -30,8 +30,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/bookmarklet-repository/_app/pages/__layout.svelte-666ed8bc.js"),
-						import("/bookmarklet-repository/_app/pages/bookmarklet/[...file]/index.svelte-93133858.js")
+						import("/bookmarklet-repository/_app/pages/__layout.svelte-cdefbe9a.js"),
+						import("/bookmarklet-repository/_app/pages/bookmarklet/[...file]/index.svelte-226e3058.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -47,18 +47,19 @@
 		<div id="svelte">
 
 
+
+
 <h1>Bookmarklet Repository</h1>
 <ul><li><a href="/bookmarklet-repository/">Home</a></li>
-	<li><a href="/bookmarklet-repository/bookmarklet">Bookmarklets</a></li></ul>
+<li><a href="/bookmarklet-repository/bookmarklet">Bookmarklets</a></li></ul>
 
 <h2>hello-world</h2>
-Drag this link to your bookmarks bar:<a href="javascript:console.log(&#39;Hello, world!&#39;);\n">hello-world</a>
-<!-- HTML_TAG_START --><pre><code>console.log('Hello, world!');
-</pre></code><!-- HTML_TAG_END -->
+Drag this link to your bookmarks bar:<a href="javascript:(function(){console.log(&quot;Hello, world!&quot;);}());">hello-world</a>
+<!-- HTML_TAG_START --><pre><code><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Hello, world!&#x27;</span>);</code></pre><!-- HTML_TAG_END -->
 
 
 
-	<script type="application/json" data-type="svelte-data" data-url="/data/hello-world/data.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"name\":\"hello-world\",\"pre\":\"\u003Cpre\u003E\u003Ccode\u003Econsole.log('Hello, world!');\\n\u003C\u002Fpre\u003E\u003C\u002Fcode\u003E\",\"url\":\"javascript:console.log('Hello, world!');\\n\"}"}</script>
+	<script type="application/json" data-type="svelte-data" data-url="/data/hello-world/data.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"name\":\"hello-world\",\"pre\":\"\u003Cpre\u003E\u003Ccode\u003E\u003Cspan class=\\\"hljs-variable language_\\\"\u003Econsole\u003C\u002Fspan\u003E.\u003Cspan class=\\\"hljs-title function_\\\"\u003Elog\u003C\u002Fspan\u003E(\u003Cspan class=\\\"hljs-string\\\"\u003E&#x27;Hello, world!&#x27;\u003C\u002Fspan\u003E);\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\",\"url\":\"javascript:(function(){console.log(\\\"Hello, world!\\\");}());\"}"}</script>
 </div>
 	</body>
 </html>

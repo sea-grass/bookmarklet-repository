@@ -1,1 +1,1 @@
-{"name":"alert","pre":"<pre><code>alert('Boo!');\n</pre></code>","url":"javascript:alert('Boo!');\n"}
+{"name":"alert","pre":"<pre><code><span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&#x27;Boo!&#x27;</span>);</code></pre>","url":"javascript:(function(){alert(\"Boo!\");}());"}
