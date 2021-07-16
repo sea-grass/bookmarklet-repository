@@ -45,7 +45,9 @@ export async function get(file: string): Promise<Get | GetError> {
 	const { code: minifiedCode } = await minify(code);
 	const beautifiedCode = beautify(code);
 
-	const { value: highlightedCode } = hljs.highlight(beautifiedCode, { language: 'js' });
+	const { value: highlightedCode } = hljs.highlight(beautifiedCode, {
+		language: 'js'
+	});
 	const pre = `<pre><code>${highlightedCode}</code></pre>`;
 	const url = `javascript:${wrapBookmarkletCode(minifiedCode)}`;
 

@@ -1,15 +1,15 @@
 <script>
-  import { base } from '$app/paths';
+	import { base } from '$app/paths';
 
-  export let href;
+	export let href;
 
-  const resolve = path => {
-    if (path.startsWith('/')) {
-      return `${base}${path}`;
-    }
+	const resolve = (path) => {
+		if (path.startsWith('/')) {
+			return `${base}${path}`;
+		}
 
-    return path;
-  };
+		return path;
+	};
 </script>
 
-<a href={resolve(href)}><slot/></a>
+<a href={resolve(href)}><slot /></a>

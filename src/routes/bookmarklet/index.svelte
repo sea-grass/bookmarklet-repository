@@ -22,7 +22,7 @@
 </script>
 
 <script>
-  import Link from '$lib/Link.svelte';
+	import Link from '$lib/Link.svelte';
 
 	export let urls = [];
 </script>
@@ -31,7 +31,7 @@
 <ul>
 	{#each urls as url}
 		<li>
-      <Link href={url}>{url}</Link>
+			<Link href={url}>{url}</Link>
 		</li>
 	{/each}
 </ul>

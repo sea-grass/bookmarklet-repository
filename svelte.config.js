@@ -15,9 +15,9 @@ const config = {
 			crawl: true,
 			pages: ['/', '/bookmarklet']
 		},
-    paths: {
-      base: process.env.BASE_URL || ''
-    },
+		paths: {
+			base: process.env.BASE_URL || ''
+		},
 		router: false,
 		adapter: adapter({
 			pages: 'build',

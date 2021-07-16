@@ -1,7 +1,7 @@
 const debounce = (interval, callback) => {
 	let timeout;
 
-	return function() {
+	return function () {
 		if (timeout) {
 			clearTimeout(timeout);
 		}
@@ -43,17 +43,12 @@ const changeListener = debounce(300, ({ target: { value: html } }) => {
 });
 editor.addEventListener('input', changeListener);
 editor.addEventListener('change', changeListener);
-editor.style.margin = "1em 0";
+editor.style.margin = '1em 0';
 editor.style.padding = '1em';
-editor.style.border = "none";
-editor.style.fontSize = "20px";
-editor.style.background = "#eee";
+editor.style.border = 'none';
+editor.style.fontSize = '20px';
+editor.style.background = '#eee';
 editor.placeholder = '<h1>Hello world</h1>';
 
 layout.appendChild(editor);
 layout.appendChild(previewer);
-
-
-
-
-

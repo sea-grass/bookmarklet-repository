@@ -11,11 +11,28 @@ deps:
 
 source:
   FROM +deps
-  COPY tsconfig.json ./
+  COPY \
+    tsconfig.json \
+    svelte.config.js ./
+  COPY --dir \
+    src \
+    static \
+    bookmarklets ./
+
+format:
+  FROM +deps
+  COPY .prettierrc .prettierignore .
+  COPY .eslintrc.cjs .
+  COPY --dir src ./
+  COPY --dir bookmarklets ./
   COPY svelte.config.js ./
-  COPY src src
-  COPY static static
-  COPY bookmarklets bookmarklets
+
+  RUN npm run format
+
+  SAVE ARTIFACT src AS LOCAL src
+  SAVE ARTIFACT bookmarklets AS LOCAL bookmarklets
+  SAVE ARTIFACT svelte.config.js AS LOCAL svelte.config.js
+
 
 dev:
   FROM +source
@@ -29,15 +46,11 @@ dev:
 
 lint:
   FROM +source
-  COPY .prettierrc ./
-  COPY .prettierignore ./
-  COPY .gitignore ./
-  COPY .eslintrc.cjs ./
-  COPY .eslintcache .eslintcache
+  COPY .gitignore .
+  COPY .prettierrc .prettierignore .
+  COPY .eslintrc.cjs .
 
   RUN npm run lint
-
-  SAVE ARTIFACT .eslintcache AS LOCAL .eslintcache
 
 build:
   FROM +source
