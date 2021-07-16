@@ -2,10 +2,19 @@ import glob from 'glob';
 import fs from 'fs';
 import { cwd } from 'process';
 import { join, relative, resolve } from 'path';
+import { minify } from 'terser';
+import { js as beautify } from 'js-beautify';
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('js', javascript);
 
 const { readFile, stat } = fs.promises;
 
 const BOOKMARKLET_DIR = resolve(cwd(), 'bookmarklets');
+
+const wrapBookmarkletCode = (code) => {
+	return `(function(){${code}}());`;
+};
 
 interface Bookmarklet {
 	name: string;
@@ -31,14 +40,16 @@ export async function get(file: string): Promise<Get | GetError> {
 		};
 	}
 
-	const contents = await readFile(path);
+	const code = await readFile(path).then(String);
+	const { code: minifiedCode } = await minify(code);
+	const beautifiedCode = beautify(code);
+
+	const { value: highlightedCode } = hljs.highlight(beautifiedCode, { language: 'js' });
+	const pre = `<pre><code>${highlightedCode}</code></pre>`;
+	const url = `javascript:${wrapBookmarkletCode(minifiedCode)}`;
 
 	const parts = file.split('/');
 	const name = parts[parts.length - 1];
-
-	const pre = `<pre><code>${contents}</pre></code>`;
-	const url = `javascript:${contents}`;
-
 	return {
 		name,
 		pre,

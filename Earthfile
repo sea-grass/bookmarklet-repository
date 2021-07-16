@@ -20,7 +20,11 @@ source:
 dev:
   FROM +source
   EXPOSE 3000
-  CMD npm run dev
+  EXPOSE 24678
+  VOLUME /app/src
+  VOLUME /app/static
+  VOLUME /app/bookmarklets
+  CMD npm run dev -- --host
   SAVE IMAGE my-app-dev:latest
 
 lint:
