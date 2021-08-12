@@ -33,7 +33,7 @@ export async function get(file: string): Promise<Get | GetError> {
 	const path = resolve(BOOKMARKLET_DIR, file + '.js');
 
 	try {
-		const stats = await stat(path);
+		await stat(path);
 	} catch (error) {
 		return {
 			error: 'not found'

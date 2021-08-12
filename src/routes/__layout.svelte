@@ -14,14 +14,24 @@
 		}
 	</style>
 </svelte:head>
-<h1>Bookmarklet Repository</h1>
-<ul>
-	<li>
-		<Link href="/">Home</Link>
-	</li>
-	<li>
-		<Link href="/bookmarklet">Bookmarklets</Link>
-	</li>
-</ul>
+<div>
+	<Link href="/"><h1>Bookmarklet Repository</h1></Link>
+	<ul>
+		<li>
+			<Link href="/bookmarklet">Bookmarklets</Link>
+		</li>
+	</ul>
+	<hr />
+	<slot />
+</div>
 
-<slot />
+<style>
+	div {
+		max-width: 980px;
+		margin: 0 auto;
+	}
+
+	div :global(p) {
+		max-width: 460px;
+	}
+</style>
