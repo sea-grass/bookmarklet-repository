@@ -1,5 +1,5 @@
 <script context="module">
-  import resolve from '$lib/resolve';
+	import resolve from '$lib/resolve';
 
 	export async function load({ fetch }) {
 		const res = await fetch(resolve('/bookmarklet/all.json'));

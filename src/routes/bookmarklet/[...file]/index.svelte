@@ -1,5 +1,5 @@
 <script context="module">
-  import resolve from '$lib/resolve';
+	import resolve from '$lib/resolve';
 
 	export async function load({ fetch, page: { params } }) {
 		const { file } = params;

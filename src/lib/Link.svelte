@@ -1,8 +1,7 @@
 <script>
-  import resolve from '$lib/resolve';
+	import resolve from '$lib/resolve';
 
 	export let href;
-
 </script>
 
 <a href={resolve(href)} {...$$restProps}><slot /></a>
