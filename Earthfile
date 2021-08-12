@@ -63,7 +63,10 @@ build:
 
 docker:
   FROM httpd:2.4
-  COPY +build/build /usr/local/apache2/htdocs/
+
+  ARG BASE_URL
+
+  COPY +build/build /usr/local/apache2/htdocs/$BASE_URL
   SAVE IMAGE my-app:latest
 
 all:

@@ -1,6 +1,8 @@
 <script context="module">
+  import resolve from '$lib/resolve';
+
 	export async function load({ fetch }) {
-		const res = await fetch('/bookmarklet/all.json');
+		const res = await fetch(resolve('/bookmarklet/all.json'));
 
 		if (!res.ok) {
 			return {
