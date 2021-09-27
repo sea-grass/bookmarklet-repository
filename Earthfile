@@ -4,6 +4,7 @@ WORKDIR /app
 deps:
   COPY package.json ./
   COPY package-lock.json ./
+
   RUN npm install
 
   SAVE ARTIFACT package.json AS LOCAL ./package.json
@@ -64,6 +65,11 @@ build:
   ARG BASE_URL
 
   RUN npm run build
+
+  # If the site is published to GitHub Pages, we need to prevent it from interpreting
+  # it as a Jekyll site, otherwise the generated `_app` directory will be considered private.
+  # We want `_app` to be public because that's where SvelteKit drops the generated assets.
+  RUN touch build/.nojekyll
 
   SAVE ARTIFACT build AS LOCAL ./build
 
