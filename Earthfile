@@ -9,6 +9,10 @@ deps:
   SAVE ARTIFACT package.json AS LOCAL ./package.json
   SAVE ARTIFACT package-lock.json AS LOCAL ./package-lock.json
 
+env:
+  RUN printf 'VITE_BUILD_DATE=%s\n' "$(date)" > .env
+  SAVE ARTIFACT .env
+
 source:
   FROM +deps
   COPY \
@@ -36,6 +40,7 @@ format:
 
 dev:
   FROM +source
+  COPY +env/.env .
   EXPOSE 3000
   EXPOSE 24678
   VOLUME /app/src
@@ -54,6 +59,7 @@ lint:
 
 build:
   FROM +source
+  COPY +env/.env .
 
   ARG BASE_URL
 

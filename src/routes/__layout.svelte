@@ -1,6 +1,7 @@
 <script>
 	import Link from '$lib/Link.svelte';
 	import { useColorScheme } from '$lib/utils';
+	import { variables } from '$lib/variables';
 
 	const colorScheme$ = useColorScheme();
 </script>
@@ -23,6 +24,9 @@
 	</ul>
 	<hr />
 	<slot />
+	<div>
+		<i>Last built on {variables.buildDate}</i>
+	</div>
 </div>
 
 <style>
