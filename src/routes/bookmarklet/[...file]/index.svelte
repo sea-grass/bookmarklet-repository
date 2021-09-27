@@ -1,9 +1,7 @@
 <script context="module">
-	import resolve from '$lib/resolve';
-
 	export async function load({ fetch, page: { params } }) {
 		const { file } = params;
-		const res = await fetch(resolve(`/data/${file}/data.json`));
+		const res = await fetch(`/data/${file}/data.json`);
 
 		if (!res.ok) {
 			return {
