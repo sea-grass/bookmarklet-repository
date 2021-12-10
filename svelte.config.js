@@ -13,7 +13,7 @@ const config = {
 		target: '#svelte',
 		prerender: {
 			crawl: true,
-			entries: ['/', '/bookmarklet']
+			entries: ['/']
 		},
 		paths: {
 			base: process.env.BASE_URL || ''
