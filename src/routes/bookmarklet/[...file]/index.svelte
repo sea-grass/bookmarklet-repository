@@ -1,7 +1,7 @@
-<script context="module">
+<script context="module" type="ts">
 	export async function load({ fetch, page: { params } }) {
 		const { file } = params;
-		const res = await fetch(`/data/${file}/data.json`);
+		const res = await fetch(`/api/bookmarklet/${file}/data.json`);
 
 		if (!res.ok) {
 			return {
@@ -26,13 +26,13 @@
 	}
 </script>
 
-<script>
+<script type="ts">
 	import Link from '$lib/Link.svelte';
 
-	export let name;
-	export let pre;
-	export let url;
-	export let repoUrl;
+	export let name: string;
+	export let pre: string;
+	export let url: string;
+	export let repoUrl: string;
 </script>
 
 <h2>{name}</h2>

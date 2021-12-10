@@ -13,7 +13,7 @@ const { js: beautify } = jsBeautify;
 
 const BOOKMARKLET_DIR = resolve(cwd(), 'bookmarklets');
 
-const wrapBookmarkletCode = (code) => {
+const wrapBookmarkletCode = (code: string) => {
 	return `(function(){${code}}());`;
 };
 
@@ -25,19 +25,13 @@ interface Bookmarklet {
 
 type Get = Bookmarklet;
 
-interface GetError {
-	error: string;
-}
-
-export async function get(file: string): Promise<Get | GetError> {
+export async function get(file: string): Promise<Get | Error> {
 	const path = resolve(BOOKMARKLET_DIR, file + '.js');
 
 	try {
 		await stat(path);
 	} catch (error) {
-		return {
-			error: 'not found'
-		};
+		return new Error('not found');
 	}
 
 	const code = await readFile(path).then(String);
@@ -57,10 +51,6 @@ export async function get(file: string): Promise<Get | GetError> {
 		pre,
 		url
 	};
-
-	return {
-		error: 'not found'
-	};
 }
 
 type BookmarkletPath = string;
@@ -69,23 +59,17 @@ interface GetAll {
 	paths: BookmarkletPath[];
 }
 
-interface GetAllError {
-	error: string;
-}
-
-export async function getAll(): Promise<GetAll | GetAllError> {
-	let files;
+export async function getAll(): Promise<GetAll | Error> {
+	let files: string[];
 	try {
-		files = await new Promise((resolve, reject) =>
+		files = await new Promise<string[]>((resolve, reject) =>
 			glob(join(BOOKMARKLET_DIR, '**/*.js'), (err, files) => {
 				if (err) reject(err);
 				else resolve(files);
 			})
 		);
 	} catch (error) {
-		return {
-			error
-		};
+		return new Error(error.message);
 	}
 
 	const paths = files.map((path) => {

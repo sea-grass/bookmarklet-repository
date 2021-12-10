@@ -6,7 +6,7 @@ const colorSchemeQuery = '(prefers-color-scheme: dark)';
 const initialValue = 'light';
 const colorScheme$ = writable(initialValue);
 
-const listener = (event: HTMLEvent) => {
+const listener = (event: MediaQueryListEvent) => {
 	colorScheme$.set(event.matches ? 'dark' : 'light');
 };
 

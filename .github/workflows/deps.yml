@@ -2,22 +2,22 @@ name: Deps
 
 on:
   schedule:
-    - cron: "0 4 * * 1"
+    - cron: '0 4 * * 1'
   workflow_dispatch:
 
 jobs:
   npm:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-      with:
-        ref: main
-    - name: Install updates
-      run: |
-        git config user.name 'sea-grass'
-        git config user.email 'sea-grass@users.noreply.github.com'
-        npx npm-check-updates -u
-        git add package.json package-lock.json
-        git commit -m "Bump package versions"
-    - name: Create pull request
-      uses: peter-evans/create-pull-request@v3
+      - uses: actions/checkout@v1
+        with:
+          ref: main
+      - name: Install updates
+        run: |
+          git config user.name 'sea-grass'
+          git config user.email 'sea-grass@users.noreply.github.com'
+          npx npm-check-updates -u
+          git add package.json package-lock.json
+          git commit -m "Bump package versions"
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3

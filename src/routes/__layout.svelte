@@ -1,41 +1,15 @@
-<script>
+<script type="ts">
+	import '../tailwind.css';
+	import '../global.css';
 	import Link from '$lib/Link.svelte';
-	import { useColorScheme } from '$lib/utils';
-	import { variables } from '$lib/variables';
-
-	const colorScheme$ = useColorScheme();
+	import { buildDate } from '$lib/variables';
 </script>
 
-<svelte:head>
-	<style>
-		@import url('https://unpkg.com/@highlightjs/cdn-assets@11.1.0/styles/a11y-light.min.css');
-
-		@media (prefers-color-scheme: dark) {
-			@import url('https://unpkg.com/@highlightjs/cdn-assets@11.1.0/styles/a11y-dark.min.css');
-		}
-	</style>
-</svelte:head>
-<div>
-	<Link href="/"><h1>Bookmarklet Repository</h1></Link>
-	<ul>
-		<li>
-			<Link href="/bookmarklet">Bookmarklets</Link>
-		</li>
-	</ul>
+<div class="max-w-md my-0 mx-auto">
+	<Link href="/"><h1 class="font-sans text-4xl text-blue-500">Bookmarklet Repository</h1></Link>
 	<hr />
 	<slot />
 	<div>
-		<i>Last built on {variables.buildDate}</i>
+		<i>Last built on {buildDate}</i>
 	</div>
 </div>
-
-<style>
-	div {
-		max-width: 980px;
-		margin: 0 auto;
-	}
-
-	div :global(p) {
-		max-width: 460px;
-	}
-</style>

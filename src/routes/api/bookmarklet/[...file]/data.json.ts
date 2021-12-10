@@ -4,10 +4,10 @@ export async function get({ params }) {
 	const { file } = params;
 	const res = await bkmklt.get(file);
 
-	if (res.error) {
+	if (res instanceof Error) {
 		return {
 			status: 404,
-			error: res.error
+			error: res.message
 		};
 	}
 

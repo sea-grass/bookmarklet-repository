@@ -1,0 +1,5 @@
+@import url('https://unpkg.com/@highlightjs/cdn-assets@11.1.0/styles/a11y-light.min.css');
+
+@media (prefers-color-scheme: dark) {
+	@import url('https://unpkg.com/@highlightjs/cdn-assets@11.1.0/styles/a11y-dark.min.css');
+}
