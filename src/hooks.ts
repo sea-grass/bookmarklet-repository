@@ -11,7 +11,6 @@ export async function handle({ request, resolve }) {
 			useShortDoctype: true,
 			removeComments: true
 		});
-		console.log('minifying!', body);
 		return {
 			...response,
 			body
