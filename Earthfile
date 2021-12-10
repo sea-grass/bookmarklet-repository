@@ -20,7 +20,7 @@ source:
     tsconfig.json \
     tailwind.config.cjs \
     svelte.config.js \
-    postcss.config.js ./
+    postcss.config.cjs ./
   COPY --dir \
     src \
     static \
