@@ -18,7 +18,9 @@ source:
   FROM +deps
   COPY \
     tsconfig.json \
-    svelte.config.js ./
+    tailwind.config.cjs \
+    svelte.config.js \
+    postcss.config.js ./
   COPY --dir \
     src \
     static \
