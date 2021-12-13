@@ -1,13 +1,15 @@
 const sourceWindow = document.createElement('div');
-sourceWindow.style.display = 'flex';
-sourceWindow.style.flexDirection = 'column';
-sourceWindow.style.zIndex = 1000;
-sourceWindow.style.position = 'absolute';
-sourceWindow.style.top = 0;
-sourceWindow.style.left = '4px';
-sourceWindow.style.height = '100vh';
-sourceWindow.style.background = 'white';
-sourceWindow.style.outline = '4px dotted red';
+Object.assign(sourceWindow.style, {
+  display: 'flex',
+  flexDirection: 'column',
+  zIndex: 1000,
+  position: 'absolute',
+  top: 0,
+  left: '4px',
+  height: '100vh',
+  background: 'white',
+  outline: '4x dotted red',
+});
 document.body.appendChild(sourceWindow);
 
 const close = document.createElement('button');

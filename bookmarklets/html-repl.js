@@ -11,14 +11,20 @@ const debounce = (interval, callback) => {
     }, interval);
   };
 };
+const cel = (nodeName, styles = {}) => {
+  const el = document.createElement(nodeName);
+  Object.assign(el.style, styles);
+  return el;
+};
 
-const el = document.createElement('div');
-el.style.position = 'absolute';
-el.style.top = 0;
-el.style.left = 0;
-el.style.width = '100vw';
-el.style.height = '100vh';
-el.style.background = 'white';
+const el = cel('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '110vw',
+  height: '100vh',
+  background: 'white',
+});
 document.body.appendChild(el);
 
 const close = document.createElement('button');
@@ -30,24 +36,26 @@ title.innerText = 'html-repl';
 title.appendChild(close);
 el.appendChild(title);
 
-const layout = document.createElement('div');
-layout.style.display = 'flex';
-layout.style.flexDirection = 'column';
+const layout = cel('div', {
+  display: 'flex',
+  flexDirection: 'column',
+});
 el.appendChild(layout);
 
 const previewer = document.createElement('div');
 
-const editor = document.createElement('textarea');
+const editor = cel('textarea', {
+  margin: '1em 0',
+  padding: '1em',
+  border: 'none',
+  fontSize: '20px',
+  background: '#eee',
+});
 const changeListener = debounce(300, ({ target: { value: html } }) => {
   previewer.innerHTML = html;
 });
 editor.addEventListener('input', changeListener);
 editor.addEventListener('change', changeListener);
-editor.style.margin = '1em 0';
-editor.style.padding = '1em';
-editor.style.border = 'none';
-editor.style.fontSize = '20px';
-editor.style.background = '#eee';
 editor.placeholder = '<h1>Hello world</h1>';
 
 layout.appendChild(editor);
