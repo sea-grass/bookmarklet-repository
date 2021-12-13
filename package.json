@@ -2,6 +2,7 @@
   "name": "bookmarklet-repository",
   "version": "0.0.1",
   "scripts": {
+    "prepare": "husky install",
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
@@ -24,6 +25,7 @@
     "eslint-plugin-svelte3": "^3.2.1",
     "glob": "^7.2.0",
     "highlight.js": "latest",
+    "husky": "^7.0.4",
     "js-beautify": "next",
     "postcss-load-config": "^3.1.0",
     "prettier": "~2.5.1",
