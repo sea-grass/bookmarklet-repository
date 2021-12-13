@@ -1,15 +1,15 @@
 const debounce = (interval, callback) => {
-	let timeout;
+  let timeout;
 
-	return function () {
-		if (timeout) {
-			clearTimeout(timeout);
-		}
-		timeout = setTimeout(() => {
-			callback(...arguments);
-			timeout = null;
-		}, interval);
-	};
+  return function () {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+      callback(...arguments);
+      timeout = null;
+    }, interval);
+  };
 };
 
 const el = document.createElement('div');
@@ -39,7 +39,7 @@ const previewer = document.createElement('div');
 
 const editor = document.createElement('textarea');
 const changeListener = debounce(300, ({ target: { value: html } }) => {
-	previewer.innerHTML = html;
+  previewer.innerHTML = html;
 });
 editor.addEventListener('input', changeListener);
 editor.addEventListener('change', changeListener);

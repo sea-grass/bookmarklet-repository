@@ -7,18 +7,18 @@ const initialValue = 'light';
 const colorScheme$ = writable(initialValue);
 
 const listener = (event: MediaQueryListEvent) => {
-	colorScheme$.set(event.matches ? 'dark' : 'light');
+  colorScheme$.set(event.matches ? 'dark' : 'light');
 };
 
 export function useColorScheme() {
-	if (!browser || !window.matchMedia) return colorScheme$;
+  if (!browser || !window.matchMedia) return colorScheme$;
 
-	const mediaQuery = window.matchMedia(colorSchemeQuery);
-	colorScheme$.set(mediaQuery.matches ? 'dark' : 'light');
-	mediaQuery.addEventListener('change', listener);
-	onDestroy(() => {
-		mediaQuery.removeEventListener('change', listener);
-	});
+  const mediaQuery = window.matchMedia(colorSchemeQuery);
+  colorScheme$.set(mediaQuery.matches ? 'dark' : 'light');
+  mediaQuery.addEventListener('change', listener);
+  onDestroy(() => {
+    mediaQuery.removeEventListener('change', listener);
+  });
 
-	return colorScheme$;
+  return colorScheme$;
 }

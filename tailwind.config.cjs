@@ -1,4 +1,4 @@
 module.exports = {
-	mode: 'jit',
-	content: ['./src/**/*.svelte', 'index.html']
+  mode: 'jit',
+  content: ['./src/**/*.svelte', 'index.html'],
 };
