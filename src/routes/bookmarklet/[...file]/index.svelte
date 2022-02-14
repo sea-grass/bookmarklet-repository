@@ -1,5 +1,5 @@
 <script context="module" type="ts">
-  export async function load({ fetch, page: { params } }) {
+  export async function load({ fetch, params }) {
     const { file } = params;
     const res = await fetch(`/api/bookmarklet/${file}/data.json`);
 
