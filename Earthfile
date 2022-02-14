@@ -1,14 +1,16 @@
 FROM node:14-alpine
 WORKDIR /app
 
+RUN npm i -g pnpm
+
 deps:
   COPY package.json ./
-  COPY package-lock.json ./
+  COPY pnpm-lock.yaml ./
 
-  RUN npm install
+  RUN pnpm install
 
   SAVE ARTIFACT package.json AS LOCAL ./package.json
-  SAVE ARTIFACT package-lock.json AS LOCAL ./package-lock.json
+  SAVE ARTIFACT pnpm-lock.yaml AS LOCAL ./pnpm-lock.yaml
 
 env:
   RUN printf 'VITE_BUILD_DATE=%s\n' "$(date)" > .env
@@ -34,7 +36,7 @@ format:
   COPY --dir bookmarklets ./
   COPY svelte.config.js ./
 
-  RUN npm run format
+  RUN pnpm format
 
   SAVE ARTIFACT src AS LOCAL src
   SAVE ARTIFACT bookmarklets AS LOCAL bookmarklets
@@ -49,7 +51,7 @@ dev:
   VOLUME /app/src
   VOLUME /app/static
   VOLUME /app/bookmarklets
-  CMD npm run dev -- --host
+  CMD pnpm dev -- --host
   SAVE IMAGE my-app-dev:latest
 
 lint:
@@ -58,7 +60,7 @@ lint:
   COPY .prettierrc .prettierignore .
   COPY .eslintrc.cjs .
 
-  RUN npm run lint
+  RUN pnpm lint
 
 build:
   FROM +source
@@ -66,7 +68,7 @@ build:
 
   ARG BASE_URL
 
-  RUN npm run build
+  RUN pnpm build
 
   # If the site is published to GitHub Pages, we need to prevent it from interpreting
   # it as a Jekyll site, otherwise the generated `_app` directory will be considered private.
