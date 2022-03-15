@@ -1,45 +1,46 @@
-<script context="module" type="ts">
-  export async function load({ fetch, params }) {
-    const { file } = params;
-    const res = await fetch(`/api/bookmarklet/${file}/data.json`);
+<script context="module" lang="ts">
+  import { LoadBookmarkletError } from '$lib/errors';
 
-    if (!res.ok) {
+  export async function load({ fetch, params }) {
+    const file: string = params.file;
+
+    let bookmarklet;
+    try {
+      bookmarklet = await fetch(`/bookmarklet/${file}.json`)
+        .then(res => (res.ok ? res.json() : Promise.reject(new LoadBookmarkletError())))
+        .then(({ bookmarklet }) => bookmarklet);
+    } catch (error) {
+      console.error(error);
       return {
-        status: 404,
-        error: 'could not load bookmarklet data',
+        status: 500,
+        error,
       };
     }
-
-    const { name, pre, url } = await res.json();
 
     const repoUrl =
       'https://github.com/sea-grass/bookmarklet-repository/blob/main/bookmarklets/' + file + '.js';
 
     return {
       props: {
-        name,
-        pre,
-        url,
+        bookmarklet,
         repoUrl,
       },
     };
   }
 </script>
 
-<script type="ts">
+<script lang="ts">
   import Link from '$lib/Link.svelte';
 
-  export let name: string;
-  export let pre: string;
-  export let url: string;
+  export let bookmarklet;
   export let repoUrl: string;
 </script>
 
-<h2>{name}</h2>
+<h2>{bookmarklet.name}</h2>
 <p>
   <i><Link href={repoUrl} target="_blank">View on GitHub</Link></i>
 </p>
 <p>
-  Drag this link to your bookmarks bar: <Link href={url}>{name}</Link>
+  Drag this link to your bookmarks bar: <Link href={bookmarklet.url}>{bookmarklet.name}</Link>
 </p>
-{@html pre}
+{@html bookmarklet.pre}

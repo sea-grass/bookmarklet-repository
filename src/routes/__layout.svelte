@@ -6,7 +6,9 @@
 </script>
 
 <div class="max-w-md my-0 mx-auto">
-  <Link href="/"><h1 class="font-sans text-4xl text-blue-500">Bookmarklet Repository</h1></Link>
+  <Link href="/">
+    <h1 class="font-sans text-4xl text-blue-500">Bookmarklet Repository</h1>
+  </Link>
   <hr />
   <slot />
   <div>

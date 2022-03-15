@@ -1,35 +1,35 @@
-<script context="module" type="ts">
-  export async function load({ fetch }) {
-    const res = await fetch('/api/bookmarklet/all.json');
+<script context="module" lang="ts">
+  import { LoadBookmarkletsError } from '$lib/errors';
 
-    if (!res.ok) {
+  /** @type {import('@sveltejs/kit').Load} */
+  export async function load({ fetch }) {
+    let bookmarklets: string[] = [];
+    try {
+      bookmarklets = await fetch('/bookmarklet/all.json')
+        .then(res => (res.ok ? res.json() : Promise.reject(new LoadBookmarkletsError())))
+        .then(({ bookmarklets }) => bookmarklets);
+    } catch (error) {
       return {
-        status: 404,
-        error: 'Could not load bookmarklets',
+        status: 500,
+        error: new LoadBookmarkletsError(),
       };
     }
-
-    const { paths } = await res.json();
-
-    const urls = paths.map((path: string) => `/bookmarklet/${path}`);
-
     return {
       props: {
-        urls,
+        bookmarklets,
       },
     };
   }
 </script>
 
-<script>
+<script lang="ts">
   import Link from '$lib/Link.svelte';
-
-  export let urls = [];
+  export let bookmarklets: string[] = [];
 </script>
 
 <h2>Bookmarklets</h2>
 <ul>
-  {#each urls as url}
+  {#each bookmarklets as url}
     <li>
       <Link href={url}>{url}</Link>
     </li>

@@ -6,6 +6,7 @@ import { minify } from 'terser';
 import jsBeautify from 'js-beautify';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
+import type { Bookmarklet } from './types';
 hljs.registerLanguage('js', javascript);
 
 const { readFile, stat } = fs.promises;
@@ -13,36 +14,30 @@ const { js: beautify } = jsBeautify;
 
 const BOOKMARKLET_DIR = resolve(cwd(), 'bookmarklets');
 
-const wrapBookmarkletCode = (code: string) => {
-  return `(function(){${code}}());`;
-};
+const wrapBookmarkletCode = (code: string) => `(function(){${code}}());`;
 
-interface Bookmarklet {
-  name: string;
-  pre: string;
-  url: string;
+class BookmarkletNotFoundError extends Error {
+  message = 'Bookmarklet not found';
+}
+class GetAllBookmarkletsError extends Error {
+  message = 'Could not get all bookmarklets';
 }
 
-type Get = Bookmarklet;
-
-export async function get(file: string): Promise<Get | Error> {
+export async function get(file: string): Promise<Bookmarklet> {
   const path = resolve(BOOKMARKLET_DIR, file + '.js');
 
   try {
     await stat(path);
   } catch (error) {
-    return new Error('not found');
+    console.error(error);
+    throw new BookmarkletNotFoundError();
   }
 
   const code = await readFile(path).then(String);
-  const { code: minifiedCode } = await minify(code);
-  const beautifiedCode = beautify(code);
-
-  const { value: highlightedCode } = hljs.highlight(beautifiedCode, {
-    language: 'js',
-  });
-  const pre = `<pre><code class='hljs'>${highlightedCode}</code></pre>`;
-  const url = `javascript:${wrapBookmarkletCode(minifiedCode)}`;
+  const url = await minify(code).then(({ code }) => `javascript:${wrapBookmarkletCode(code)}`);
+  const pre = await Promise.resolve(beautify(code))
+    .then(code => hljs.highlight(code, { language: 'js' }))
+    .then(({ value: code }) => `<pre><code class='hljs'>${code}</code></pre>`);
 
   const parts = file.split('/');
   const name = parts[parts.length - 1];
@@ -53,13 +48,7 @@ export async function get(file: string): Promise<Get | Error> {
   };
 }
 
-type BookmarkletPath = string;
-
-interface GetAll {
-  paths: BookmarkletPath[];
-}
-
-export async function getAll(): Promise<GetAll | Error> {
+export async function getAll(): Promise<string[]> {
   let files: string[];
   try {
     files = await new Promise<string[]>((resolve, reject) =>
@@ -69,7 +58,8 @@ export async function getAll(): Promise<GetAll | Error> {
       })
     );
   } catch (error) {
-    return new Error(error.message);
+    console.error(error);
+    throw new GetAllBookmarkletsError();
   }
 
   const paths = files.map(path => {
@@ -77,7 +67,7 @@ export async function getAll(): Promise<GetAll | Error> {
     return relative(BOOKMARKLET_DIR, path).replace(/\.js$/, '');
   });
 
-  return {
-    paths,
-  };
+  const urls = paths.map(path => `/bookmarklet/${path}`);
+
+  return urls;
 }
