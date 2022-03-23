@@ -1,12 +1,13 @@
 <script context="module" lang="ts">
   import { LoadBookmarkletError } from '$lib/errors';
+  import resolve from '$lib/resolve';
 
   export async function load({ fetch, params }) {
     const file: string = params.file;
 
     let bookmarklet;
     try {
-      bookmarklet = await fetch(`/bookmarklet/${file}.json`)
+      bookmarklet = await fetch(resolve(`/bookmarklet/${file}.json`))
         .then(res => (res.ok ? res.json() : Promise.reject(new LoadBookmarkletError())))
         .then(({ bookmarklet }) => bookmarklet);
     } catch (error) {

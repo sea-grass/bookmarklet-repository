@@ -3,7 +3,14 @@
   import '../global.css';
   import Link from '$lib/Link.svelte';
   import { buildDate } from '$lib/variables';
+  import resolve from '$lib/resolve';
+
+  const icon = resolve('/favicon.png');
 </script>
+
+<svelte:head>
+  <link rel="icon" href={icon} />
+</svelte:head>
 
 <div class="max-w-md my-0 mx-auto">
   <Link href="/">
