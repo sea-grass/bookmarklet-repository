@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-security-policy" content=""><link rel="icon" href="/bookmarklet-repository/favicon.png">
+	<link rel="stylesheet" href="/bookmarklet-repository/_app/assets/pages/__layout.svelte-1b0cfd7e.css">
+  </head>
+  <body>
+    <div id="svelte">
+
+
+
+
+<div class="max-w-md my-0 mx-auto"><a href="/bookmarklet-repository/" class="text-black visited:text-green-800"><h1 class="font-sans text-4xl text-blue-500">Bookmarklet Repository</h1></a>
+  <hr>
+  <h2>html-repl</h2>
+<p><i><a href="https://github.com/sea-grass/bookmarklet-repository/blob/main/bookmarklets/html-repl.js" target="_blank" class="text-black visited:text-green-800">View on GitHub</a></i></p>
+<p>Drag this link to your bookmarks bar: <a href="javascript:(function(){const debounce=(e,t)=&gt;{let n;return function(){n&amp;&amp;clearTimeout(n),n=setTimeout((()=&gt;{t(...arguments),n=null}),e)}},cel=(e,t={})=&gt;{const n=document.createElement(e);return Object.assign(n.style,t),n},el=cel(&quot;div&quot;,{position:&quot;absolute&quot;,top:0,left:0,width:&quot;110vw&quot;,height:&quot;100vh&quot;,background:&quot;white&quot;});document.body.appendChild(el);const close=document.createElement(&quot;button&quot;);close.innerText=&quot;close&quot;,close.addEventListener(&quot;click&quot;,(()=&gt;el.remove()));const title=document.createElement(&quot;h1&quot;);title.innerText=&quot;html-repl&quot;,title.appendChild(close),el.appendChild(title);const layout=cel(&quot;div&quot;,{display:&quot;flex&quot;,flexDirection:&quot;column&quot;});el.appendChild(layout);const previewer=document.createElement(&quot;div&quot;),editor=cel(&quot;textarea&quot;,{margin:&quot;1em 0&quot;,padding:&quot;1em&quot;,border:&quot;none&quot;,fontSize:&quot;20px&quot;,background:&quot;#eee&quot;}),changeListener=debounce(300,(({target:{value:e}})=&gt;{previewer.innerHTML=e}));editor.addEventListener(&quot;input&quot;,changeListener),editor.addEventListener(&quot;change&quot;,changeListener),editor.placeholder=&quot;&lt;h1&gt;Hello world&lt;/h1&gt;&quot;,layout.appendChild(editor),layout.appendChild(previewer);}());" class="text-black visited:text-green-800">html-repl</a></p>
+<pre><code class='hljs'><span class="hljs-keyword">const</span> <span class="hljs-title function_">debounce</span> = (<span class="hljs-params">interval, callback</span>) =&gt; {
+    <span class="hljs-keyword">let</span> timeout;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">if</span> (timeout) {
+            <span class="hljs-built_in">clearTimeout</span>(timeout);
+        }
+        timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-title function_">callback</span>(...<span class="hljs-variable language_">arguments</span>);
+            timeout = <span class="hljs-literal">null</span>;
+        }, interval);
+    };
+};
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">cel</span> = (<span class="hljs-params">nodeName, styles = {}</span>) =&gt; {
+    <span class="hljs-keyword">const</span> el = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(nodeName);
+    <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(el.<span class="hljs-property">style</span>, styles);
+    <span class="hljs-keyword">return</span> el;
+};
+
+<span class="hljs-keyword">const</span> el = <span class="hljs-title function_">cel</span>(<span class="hljs-string">&#x27;div&#x27;</span>, {
+    <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;absolute&#x27;</span>,
+    <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">left</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;110vw&#x27;</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-string">&#x27;100vh&#x27;</span>,
+    <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;white&#x27;</span>,
+});
+<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(el);
+
+<span class="hljs-keyword">const</span> close = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;button&#x27;</span>);
+close.<span class="hljs-property">innerText</span> = <span class="hljs-string">&#x27;close&#x27;</span>;
+close.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> el.<span class="hljs-title function_">remove</span>());
+
+<span class="hljs-keyword">const</span> title = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;h1&#x27;</span>);
+title.<span class="hljs-property">innerText</span> = <span class="hljs-string">&#x27;html-repl&#x27;</span>;
+title.<span class="hljs-title function_">appendChild</span>(close);
+el.<span class="hljs-title function_">appendChild</span>(title);
+
+<span class="hljs-keyword">const</span> layout = <span class="hljs-title function_">cel</span>(<span class="hljs-string">&#x27;div&#x27;</span>, {
+    <span class="hljs-attr">display</span>: <span class="hljs-string">&#x27;flex&#x27;</span>,
+    <span class="hljs-attr">flexDirection</span>: <span class="hljs-string">&#x27;column&#x27;</span>,
+});
+el.<span class="hljs-title function_">appendChild</span>(layout);
+
+<span class="hljs-keyword">const</span> previewer = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);
+
+<span class="hljs-keyword">const</span> editor = <span class="hljs-title function_">cel</span>(<span class="hljs-string">&#x27;textarea&#x27;</span>, {
+    <span class="hljs-attr">margin</span>: <span class="hljs-string">&#x27;1em 0&#x27;</span>,
+    <span class="hljs-attr">padding</span>: <span class="hljs-string">&#x27;1em&#x27;</span>,
+    <span class="hljs-attr">border</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
+    <span class="hljs-attr">fontSize</span>: <span class="hljs-string">&#x27;20px&#x27;</span>,
+    <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;#eee&#x27;</span>,
+});
+<span class="hljs-keyword">const</span> changeListener = <span class="hljs-title function_">debounce</span>(<span class="hljs-number">300</span>, <span class="hljs-function">(<span class="hljs-params">{
+    target: {
+        value: html
+    }
+}</span>) =&gt;</span> {
+    previewer.<span class="hljs-property">innerHTML</span> = html;
+});
+editor.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;input&#x27;</span>, changeListener);
+editor.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;change&#x27;</span>, changeListener);
+editor.<span class="hljs-property">placeholder</span> = <span class="hljs-string">&#x27;&lt;h1&gt;Hello world&lt;/h1&gt;&#x27;</span>;
+
+layout.<span class="hljs-title function_">appendChild</span>(editor);
+layout.<span class="hljs-title function_">appendChild</span>(previewer);</code></pre>
+  <div><i>Last built on Wed Mar 23 18:59:21 UTC 2022</i></div></div>
+
+</div>
+  </body>
+</html>

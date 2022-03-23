@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-security-policy" content=""><link rel="icon" href="/bookmarklet-repository/favicon.png">
+	<link rel="stylesheet" href="/bookmarklet-repository/_app/assets/pages/__layout.svelte-1b0cfd7e.css">
+  </head>
+  <body>
+    <div id="svelte">
+
+
+
+
+<div class="max-w-md my-0 mx-auto"><a href="/bookmarklet-repository/" class="text-black visited:text-green-800"><h1 class="font-sans text-4xl text-blue-500">Bookmarklet Repository</h1></a>
+  <hr>
+  <h2>view-source</h2>
+<p><i><a href="https://github.com/sea-grass/bookmarklet-repository/blob/main/bookmarklets/view-source.js" target="_blank" class="text-black visited:text-green-800">View on GitHub</a></i></p>
+<p>Drag this link to your bookmarks bar: <a href="javascript:(function(){const sourceWindow=document.createElement(&quot;div&quot;);Object.assign(sourceWindow.style,{display:&quot;flex&quot;,flexDirection:&quot;column&quot;,zIndex:1e3,position:&quot;absolute&quot;,top:0,left:&quot;4px&quot;,height:&quot;100vh&quot;,background:&quot;white&quot;,outline:&quot;4x dotted red&quot;}),document.body.appendChild(sourceWindow);const close=document.createElement(&quot;button&quot;);close.innerText=&quot;close&quot;,close.addEventListener(&quot;click&quot;,(()=&gt;sourceWindow.remove()));const title=document.createElement(&quot;h1&quot;);title.innerText=&quot;view-source&quot;,title.appendChild(close),sourceWindow.appendChild(title);const textarea=document.createElement(&quot;textarea&quot;);textarea.style.resize=&quot;none&quot;,textarea.disabled=!0,textarea.rows=100,textarea.cols=100,textarea.value=document.body.parentElement.outerHTML,sourceWindow.appendChild(textarea);}());" class="text-black visited:text-green-800">view-source</a></p>
+<pre><code class='hljs'><span class="hljs-keyword">const</span> sourceWindow = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);
+<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(sourceWindow.<span class="hljs-property">style</span>, {
+    <span class="hljs-attr">display</span>: <span class="hljs-string">&#x27;flex&#x27;</span>,
+    <span class="hljs-attr">flexDirection</span>: <span class="hljs-string">&#x27;column&#x27;</span>,
+    <span class="hljs-attr">zIndex</span>: <span class="hljs-number">1000</span>,
+    <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;absolute&#x27;</span>,
+    <span class="hljs-attr">top</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">left</span>: <span class="hljs-string">&#x27;4px&#x27;</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-string">&#x27;100vh&#x27;</span>,
+    <span class="hljs-attr">background</span>: <span class="hljs-string">&#x27;white&#x27;</span>,
+    <span class="hljs-attr">outline</span>: <span class="hljs-string">&#x27;4x dotted red&#x27;</span>,
+});
+<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(sourceWindow);
+
+<span class="hljs-keyword">const</span> close = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;button&#x27;</span>);
+close.<span class="hljs-property">innerText</span> = <span class="hljs-string">&#x27;close&#x27;</span>;
+close.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> sourceWindow.<span class="hljs-title function_">remove</span>());
+
+<span class="hljs-keyword">const</span> title = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;h1&#x27;</span>);
+title.<span class="hljs-property">innerText</span> = <span class="hljs-string">&#x27;view-source&#x27;</span>;
+title.<span class="hljs-title function_">appendChild</span>(close);
+sourceWindow.<span class="hljs-title function_">appendChild</span>(title);
+
+<span class="hljs-keyword">const</span> textarea = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;textarea&#x27;</span>);
+textarea.<span class="hljs-property">style</span>.<span class="hljs-property">resize</span> = <span class="hljs-string">&#x27;none&#x27;</span>;
+textarea.<span class="hljs-property">disabled</span> = <span class="hljs-literal">true</span>;
+textarea.<span class="hljs-property">rows</span> = <span class="hljs-number">100</span>;
+textarea.<span class="hljs-property">cols</span> = <span class="hljs-number">100</span>;
+textarea.<span class="hljs-property">value</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">parentElement</span>.<span class="hljs-property">outerHTML</span>;
+sourceWindow.<span class="hljs-title function_">appendChild</span>(textarea);</code></pre>
+  <div><i>Last built on Wed Mar 23 18:59:21 UTC 2022</i></div></div>
+
+</div>
+  </body>
+</html>
