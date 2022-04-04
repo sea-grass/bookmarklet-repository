@@ -17,6 +17,8 @@ jobs:
           git config user.name 'sea-grass'
           git config user.email 'sea-grass@users.noreply.github.com'
           npx npm-check-updates -u
+          npx pnpm i --no-frozen-lockfile
+          npm run format
           git add package.json pnpm-lock.yaml
           git commit -m "Bump package versions"
       - name: Create pull request
