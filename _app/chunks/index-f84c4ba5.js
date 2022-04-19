@@ -1,1 +1,0 @@
-class s extends Error{constructor(r){super(r),this.name=this.constructor.name}}class t extends s{constructor(){super("Could not load bookmarklets.")}}class e extends Error{constructor(r){super("Could not load the requested bookmarklet ["+r+"]. Does it exist?"),this.bookmarklet=r}}export{t as L,e as a};
